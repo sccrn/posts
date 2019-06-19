@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Posts' do
+
+  # Pods for Posts
+  pod 'Alamofire', '5.0.0-beta.3'
+  pod 'RxSwift', '~> 4.0'
+  pod 'RxCocoa', '~> 4.0'
+
+  target 'PostsTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'PostsUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
