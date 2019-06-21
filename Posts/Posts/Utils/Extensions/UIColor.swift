@@ -18,6 +18,9 @@ extension UIColor {
     
     ///#1E2320
     static let secondBackgroundColor = UIColor(red: 30/255, green: 35/255, blue: 32/255, alpha: 1)
+    
+    ///#23F0C7
+    static let greenColor = UIColor(red: 34/255, green: 240/255, blue: 199/255, alpha: 1)
 }
 
 

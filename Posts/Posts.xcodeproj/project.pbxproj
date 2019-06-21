@@ -21,6 +21,9 @@
 		22CE8F4922BAF76C004FA2E0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F4822BAF76C004FA2E0 /* UIColor.swift */; };
 		22CE8F4C22BB004B004FA2E0 /* PNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F4B22BB004B004FA2E0 /* PNavigationController.swift */; };
 		22CE8F4E22BB01A6004FA2E0 /* PNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F4D22BB01A6004FA2E0 /* PNavigationBar.swift */; };
+		22CE8F5222BC3996004FA2E0 /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F5122BC3996004FA2E0 /* SplashController.swift */; };
+		22CE8F5522BC39B6004FA2E0 /* SplashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CE8F5422BC39B6004FA2E0 /* SplashController.xib */; };
+		22CE8F5722BC4F4D004FA2E0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F5622BC4F4D004FA2E0 /* SplashViewModel.swift */; };
 		87034C780F52D6A201842117 /* libPods-PostsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7BB30E1A54F10E925DE33B /* libPods-PostsTests.a */; };
 		A5D8E0DBABF9EE4AF7DC1EA6 /* libPods-Posts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9261B98560A0FEFE5AAA5 /* libPods-Posts.a */; };
 		E95486B2FD3776BE25DCDF1B /* libPods-PostsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B09EA621C36E89C2A7E87B /* libPods-PostsUITests.a */; };
@@ -68,6 +71,9 @@
 		22CE8F4822BAF76C004FA2E0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		22CE8F4B22BB004B004FA2E0 /* PNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNavigationController.swift; sourceTree = "<group>"; };
 		22CE8F4D22BB01A6004FA2E0 /* PNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNavigationBar.swift; sourceTree = "<group>"; };
+		22CE8F5122BC3996004FA2E0 /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
+		22CE8F5422BC39B6004FA2E0 /* SplashController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashController.xib; sourceTree = "<group>"; };
+		22CE8F5622BC4F4D004FA2E0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		5122993314677DD3B68695E8 /* Pods-Posts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Posts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Posts/Pods-Posts.release.xcconfig"; sourceTree = "<group>"; };
 		7EC53F309F35B8DA1E3629EC /* Pods-PostsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostsUITests/Pods-PostsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A5E54F841D601E2079EFEE2 /* Pods-PostsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostsTests/Pods-PostsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				22CE8F3822BAF5EA004FA2E0 /* App */,
+				22CE8F5322BC39A0004FA2E0 /* Splash */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -267,6 +274,16 @@
 				22CE8F4D22BB01A6004FA2E0 /* PNavigationBar.swift */,
 			);
 			path = PViews;
+			sourceTree = "<group>";
+		};
+		22CE8F5322BC39A0004FA2E0 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				22CE8F5422BC39B6004FA2E0 /* SplashController.xib */,
+				22CE8F5122BC3996004FA2E0 /* SplashController.swift */,
+				22CE8F5622BC4F4D004FA2E0 /* SplashViewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		E7BC8D26AD11837FA2C8DB92 /* Pods */ = {
@@ -391,6 +408,7 @@
 			files = (
 				22B779A322BAED1D00CBF4F8 /* LaunchScreen.storyboard in Resources */,
 				22B779A022BAED1D00CBF4F8 /* Assets.xcassets in Resources */,
+				22CE8F5522BC39B6004FA2E0 /* SplashController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,9 +505,11 @@
 				22CE8F4522BAF6E7004FA2E0 /* AppCoordinator.swift in Sources */,
 				22CE8F4122BAF6C1004FA2E0 /* Coordinator.swift in Sources */,
 				22CE8F3F22BAF6B3004FA2E0 /* APIManager.swift in Sources */,
+				22CE8F5722BC4F4D004FA2E0 /* SplashViewModel.swift in Sources */,
 				22CE8F4322BAF6DC004FA2E0 /* RootCoordinator.swift in Sources */,
 				22CE8F4722BAF758004FA2E0 /* Constants.swift in Sources */,
 				22CE8F4922BAF76C004FA2E0 /* UIColor.swift in Sources */,
+				22CE8F5222BC3996004FA2E0 /* SplashController.swift in Sources */,
 				22CE8F4C22BB004B004FA2E0 /* PNavigationController.swift in Sources */,
 				22CE8F3D22BAF699004FA2E0 /* BaseController.swift in Sources */,
 				22CE8F4E22BB01A6004FA2E0 /* PNavigationBar.swift in Sources */,
