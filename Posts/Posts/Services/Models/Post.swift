@@ -14,3 +14,14 @@ struct Post: Codable {
     let title: String
     let body: String
 }
+
+struct User: Codable {
+    let id: Int
+    let name: String
+}
+
+struct Comments: Codable {
+    let postId: Int
+    let id: Int
+    let name: String
+}

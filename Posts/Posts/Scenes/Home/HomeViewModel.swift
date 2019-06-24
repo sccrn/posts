@@ -11,18 +11,33 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
+protocol HomeCoordinatorDelegate: class {
+    func moveToDetailsScreen(_ controller: HomeController, didSelectPost model: PostModel)
+}
+
+enum HomeAction {
+    case alertError(err: Error)
+    case seeDetails(post: PostModel)
+}
+
 protocol HomeDelegate: class {
-    func didFail(err: Error)
+    func didFinish(_ action: HomeAction)
 }
 
 class HomeViewModel {
     weak var delegate: HomeDelegate?
+    weak var coordinator: HomeCoordinatorDelegate?
+    
     private let realmManager = RealmManager()
     private let apiManager = APIManager()
     private let disposeBag = DisposeBag()
     private var postsModel: [PostModel] = []
     
     var posts = BehaviorRelay<[PostModel]>(value: [])
+    
+    var postObservable: Observable<[PostModel]> {
+        return posts.asObservable()
+    }
     
     func setupPosts() {
         postsModel = realmManager.getPostObjects()
@@ -38,7 +53,7 @@ class HomeViewModel {
         apiManager.fetchPosts().subscribe(onSuccess: { [weak self] (posts) in
             self?.savePosts(response: posts)
             }, onError: { error in
-                self.delegate?.didFail(err: error)
+                self.delegate?.didFinish(.alertError(err: error))
         }).disposed(by: disposeBag)
     }
     

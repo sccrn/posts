@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class HomeController: BaseController {
     @IBOutlet weak var tableView: UITableView!
@@ -45,14 +46,30 @@ class HomeController: BaseController {
     
     private func loadLayout() {
         viewModel.delegate = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderHeight = 25
+        tableView.registerNib(cellClass: HomeCell.self)
         
-        HomeDataSource.setupTableView(tableView: tableView)
-        tableViewDataSource = HomeDataSource.init(viewModel: viewModel)
-        tableView.dataSource = tableViewDataSource
-        tableView.delegate = tableViewDataSource
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionReviews>(
+            configureCell: { dataSource, tableView, indexPath, item in
+                let cell = tableView.dequeue(cellClass: HomeCell.self, indexPath: indexPath)
+                cell.configure(postName: item.title)
+                return cell
+        })
         
-        viewModel.posts.subscribe(onNext: { [weak self] _ in
-            self?.tableView.reloadData()
+        viewModel.postObservable.flatMap { (posts) -> Observable<[SectionReviews]> in
+            var array: [SectionReviews] = []
+            posts.map { post in
+                array.append(SectionReviews(items: [post], header: ""))
+            }
+            return .just(array)
+        }.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        
+        
+        tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            guard let self = self else { return }
+            let post = self.viewModel.postSelected(for: indexPath.section)
+            self.viewModel.coordinator?.moveToDetailsScreen(self, didSelectPost: post)
         }).disposed(by: disposeBag)
     }
     
@@ -69,7 +86,12 @@ class HomeController: BaseController {
 }
 
 extension HomeController: HomeDelegate {
-    func didFail(err: Error) {
-        showALertError(message: err.localizedDescription)
+    func didFinish(_ action: HomeAction) {
+        switch action {
+        case .alertError(let err):
+            showALertError(message: err.localizedDescription)
+        case .seeDetails(let post):
+            viewModel.coordinator?.moveToDetailsScreen(self, didSelectPost: post)
+        }
     }
 }

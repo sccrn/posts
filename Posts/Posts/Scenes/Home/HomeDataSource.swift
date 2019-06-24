@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxDataSources
 
 class HomeDataSource: NSObject {
     private var viewModel: HomeViewModel
@@ -39,6 +40,7 @@ extension HomeDataSource: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let post = viewModel.postSelected(for: indexPath.section)
+        viewModel.delegate?.didFinish(.seeDetails(post: post))
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -55,5 +57,25 @@ extension HomeDataSource: UITableViewDataSource, UITableViewDelegate {
 extension HomeDataSource {
     class func setupTableView(tableView: UITableView?) {
         tableView?.registerNib(cellClass: HomeCell.self)
+    }
+}
+
+struct SectionReviews {
+    var items: [PostModel]
+    var header: String = ""
+}
+
+extension SectionReviews: SectionModelType {
+    init(original: SectionReviews, items: [PostModel]) {
+        self = original
+        self.items = items
+    }
+}
+
+extension SectionReviews: AnimatableSectionModelType {
+    typealias Identity = String
+    
+    var identity: String {
+        return header
     }
 }

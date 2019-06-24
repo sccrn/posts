@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import RxDataSources
 
 class PostModel: Object {
     @objc dynamic var userId: Int = 0
@@ -19,5 +20,13 @@ class PostModel: Object {
     
     override static func primaryKey() -> String {
         return "id"
+    }
+}
+
+extension PostModel: IdentifiableType {
+    typealias Identity = String
+    
+    var identity: String {
+        return "\(id)"
     }
 }

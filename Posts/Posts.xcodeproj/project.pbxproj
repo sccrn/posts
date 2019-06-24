@@ -19,6 +19,9 @@
 		2251CA5A22BEF09A00E9C6C4 /* PostDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5922BEF09A00E9C6C4 /* PostDetails.swift */; };
 		2251CA5E22C08AB500E9C6C4 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5D22C08AB500E9C6C4 /* PostModel.swift */; };
 		2251CA6022C0992600E9C6C4 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5F22C0992600E9C6C4 /* RealmManager.swift */; };
+		2251CA6322C0E3DE00E9C6C4 /* PostDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA6222C0E3DE00E9C6C4 /* PostDetailsController.swift */; };
+		2251CA6522C0E3F200E9C6C4 /* PostDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2251CA6422C0E3F200E9C6C4 /* PostDetailsController.xib */; };
+		2251CA6722C0E41400E9C6C4 /* PostDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA6622C0E41400E9C6C4 /* PostDetailsViewModel.swift */; };
 		22B7799922BAED1A00CBF4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7799822BAED1A00CBF4F8 /* AppDelegate.swift */; };
 		22B779A022BAED1D00CBF4F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B7799F22BAED1D00CBF4F8 /* Assets.xcassets */; };
 		22B779A322BAED1D00CBF4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B779A122BAED1D00CBF4F8 /* LaunchScreen.storyboard */; };
@@ -78,6 +81,9 @@
 		2251CA5922BEF09A00E9C6C4 /* PostDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetails.swift; sourceTree = "<group>"; };
 		2251CA5D22C08AB500E9C6C4 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		2251CA5F22C0992600E9C6C4 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		2251CA6222C0E3DE00E9C6C4 /* PostDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsController.swift; sourceTree = "<group>"; };
+		2251CA6422C0E3F200E9C6C4 /* PostDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailsController.xib; sourceTree = "<group>"; };
+		2251CA6622C0E41400E9C6C4 /* PostDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewModel.swift; sourceTree = "<group>"; };
 		22B7799522BAED1A00CBF4F8 /* Posts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Posts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B7799822BAED1A00CBF4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B7799F22BAED1D00CBF4F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,8 +179,8 @@
 		2251CA5B22C08A7300E9C6C4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				22CE8F3E22BAF6B3004FA2E0 /* APIManager.swift */,
 				22CE8F6422BC8424004FA2E0 /* API.swift */,
+				22CE8F3E22BAF6B3004FA2E0 /* APIManager.swift */,
 				2251CA5F22C0992600E9C6C4 /* RealmManager.swift */,
 			);
 			path = Managers;
@@ -188,6 +194,16 @@
 				2251CA5D22C08AB500E9C6C4 /* PostModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2251CA6122C0E3C500E9C6C4 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				2251CA6422C0E3F200E9C6C4 /* PostDetailsController.xib */,
+				2251CA6222C0E3DE00E9C6C4 /* PostDetailsController.swift */,
+				2251CA6622C0E41400E9C6C4 /* PostDetailsViewModel.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		22B7798C22BAED1900CBF4F8 = {
@@ -333,6 +349,7 @@
 				22CE8F3822BAF5EA004FA2E0 /* App */,
 				22CE8F5322BC39A0004FA2E0 /* Splash */,
 				22CE8F5B22BC7D6A004FA2E0 /* Home */,
+				2251CA6122C0E3C500E9C6C4 /* Details */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -502,6 +519,7 @@
 				22B779A322BAED1D00CBF4F8 /* LaunchScreen.storyboard in Resources */,
 				22B779A022BAED1D00CBF4F8 /* Assets.xcassets in Resources */,
 				22CE8F5522BC39B6004FA2E0 /* SplashController.xib in Resources */,
+				2251CA6522C0E3F200E9C6C4 /* PostDetailsController.xib in Resources */,
 				2251CA5122BEDC7600E9C6C4 /* HomeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,9 +551,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Posts/Pods-Posts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -543,9 +564,12 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +650,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2251CA6322C0E3DE00E9C6C4 /* PostDetailsController.swift in Sources */,
 				22CE8F4522BAF6E7004FA2E0 /* AppCoordinator.swift in Sources */,
 				2251CA4F22BEDC6C00E9C6C4 /* HomeCell.swift in Sources */,
 				22CE8F4122BAF6C1004FA2E0 /* Coordinator.swift in Sources */,
@@ -634,6 +659,7 @@
 				2251CA5E22C08AB500E9C6C4 /* PostModel.swift in Sources */,
 				22CE8F5722BC4F4D004FA2E0 /* SplashViewModel.swift in Sources */,
 				2251CA5322BEDFB600E9C6C4 /* PGradient.swift in Sources */,
+				2251CA6722C0E41400E9C6C4 /* PostDetailsViewModel.swift in Sources */,
 				2251CA4C22BEDBCF00E9C6C4 /* UITableViewCell.swift in Sources */,
 				22CE8F4322BAF6DC004FA2E0 /* RootCoordinator.swift in Sources */,
 				22CE8F4722BAF758004FA2E0 /* Constants.swift in Sources */,

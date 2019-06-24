@@ -30,4 +30,27 @@ class APIManager {
     func fetchPosts() -> Single<[Post]> {
         return createRequest(route: API.posts).asSingle()
     }
+    
+    func fetchDetails(by post: PostModel) -> Single<PostModel> {
+        let user = fetchUserDetails(by: post.userId)
+        let comments = fetchComments(by: post.id)
+        
+        return Observable<PostModel>.create({ observer in
+            Observable.zip(user, comments).subscribe(onNext: { userModel, commentsModel in
+                post.userName = userModel.name
+                post.numberOfComments = commentsModel.count
+                observer.onNext(post)
+                observer.onCompleted()
+            }).dispose()
+            return Disposables.create()
+        }).asSingle()
+    }
+    
+    private func fetchUserDetails(by userId: Int) -> Observable<User> {
+        return createRequest(route: API.user(userId: userId))
+    }
+    
+    private func fetchComments(by postId: Int) -> Observable<[Comments]> {
+        return createRequest(route: API.comments(postId: postId))
+    }
 }
