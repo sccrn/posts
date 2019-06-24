@@ -42,6 +42,12 @@ class AppCoordinator: RootCoordinator {
 
 extension AppCoordinator: SplashCoordinatorDelegate {
     func moveForwardFlow(_ controller: SplashController) {
+        controller.dismiss(animated: false, completion: nil)
+        childCoordinators.forEach { self.removeChildCoordinator($0) }
         
+        let homeCoordinator = HomeCoordinator()
+        homeCoordinator.start()
+        addChildCoordinator(homeCoordinator)
+        rootViewController.present(homeCoordinator.rootViewController, animated: false, completion: nil)
     }
 }
