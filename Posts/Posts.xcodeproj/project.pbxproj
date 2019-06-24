@@ -17,6 +17,8 @@
 		2251CA5622BEE31B00E9C6C4 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5522BEE31B00E9C6C4 /* HomeCoordinator.swift */; };
 		2251CA5822BEECD600E9C6C4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5722BEECD500E9C6C4 /* UIView.swift */; };
 		2251CA5A22BEF09A00E9C6C4 /* PostDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5922BEF09A00E9C6C4 /* PostDetails.swift */; };
+		2251CA5E22C08AB500E9C6C4 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5D22C08AB500E9C6C4 /* PostModel.swift */; };
+		2251CA6022C0992600E9C6C4 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251CA5F22C0992600E9C6C4 /* RealmManager.swift */; };
 		22B7799922BAED1A00CBF4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7799822BAED1A00CBF4F8 /* AppDelegate.swift */; };
 		22B779A022BAED1D00CBF4F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B7799F22BAED1D00CBF4F8 /* Assets.xcassets */; };
 		22B779A322BAED1D00CBF4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B779A122BAED1D00CBF4F8 /* LaunchScreen.storyboard */; };
@@ -39,9 +41,9 @@
 		22CE8F6122BC7D9D004FA2E0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F6022BC7D9D004FA2E0 /* HomeViewModel.swift */; };
 		22CE8F6322BC7DB9004FA2E0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F6222BC7DB9004FA2E0 /* Post.swift */; };
 		22CE8F6522BC8424004FA2E0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE8F6422BC8424004FA2E0 /* API.swift */; };
-		87034C780F52D6A201842117 /* libPods-PostsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7BB30E1A54F10E925DE33B /* libPods-PostsTests.a */; };
-		A5D8E0DBABF9EE4AF7DC1EA6 /* libPods-Posts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB9261B98560A0FEFE5AAA5 /* libPods-Posts.a */; };
-		E95486B2FD3776BE25DCDF1B /* libPods-PostsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B09EA621C36E89C2A7E87B /* libPods-PostsUITests.a */; };
+		3294FD0764C95E72BD085198 /* Pods_PostsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3401B5D1A272447530AEA343 /* Pods_PostsTests.framework */; };
+		A1DF3847267FE8A06516E789 /* Pods_Posts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EDEE795CF19D3F6DC04072 /* Pods_Posts.framework */; };
+		D24F1B982873E44EBEDD149C /* Pods_PostsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C4B4C0768AB3FE44981494 /* Pods_PostsUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,10 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01B09EA621C36E89C2A7E87B /* libPods-PostsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		063A1C5066189E29B74DAF27 /* Pods-PostsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostsTests/Pods-PostsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0FC91693B208685C5B68C746 /* Pods-Posts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Posts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Posts/Pods-Posts.debug.xcconfig"; sourceTree = "<group>"; };
-		1EB9261B98560A0FEFE5AAA5 /* libPods-Posts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Posts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2251CA4522BEB4CE00E9C6C4 /* PError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PError.swift; sourceTree = "<group>"; };
 		2251CA4722BED79B00E9C6C4 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		2251CA4922BEDBB600E9C6C4 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -76,6 +76,8 @@
 		2251CA5522BEE31B00E9C6C4 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		2251CA5722BEECD500E9C6C4 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2251CA5922BEF09A00E9C6C4 /* PostDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetails.swift; sourceTree = "<group>"; };
+		2251CA5D22C08AB500E9C6C4 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		2251CA5F22C0992600E9C6C4 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		22B7799522BAED1A00CBF4F8 /* Posts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Posts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B7799822BAED1A00CBF4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22B7799F22BAED1D00CBF4F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,11 +106,13 @@
 		22CE8F6022BC7D9D004FA2E0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		22CE8F6222BC7DB9004FA2E0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		22CE8F6422BC8424004FA2E0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3401B5D1A272447530AEA343 /* Pods_PostsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5122993314677DD3B68695E8 /* Pods-Posts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Posts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Posts/Pods-Posts.release.xcconfig"; sourceTree = "<group>"; };
+		64EDEE795CF19D3F6DC04072 /* Pods_Posts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Posts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC53F309F35B8DA1E3629EC /* Pods-PostsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostsUITests/Pods-PostsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A5E54F841D601E2079EFEE2 /* Pods-PostsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostsTests/Pods-PostsTests.release.xcconfig"; sourceTree = "<group>"; };
+		91C4B4C0768AB3FE44981494 /* Pods_PostsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B30B4C3FF3CC3AF25C6E9F79 /* Pods-PostsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostsUITests/Pods-PostsUITests.release.xcconfig"; sourceTree = "<group>"; };
-		ED7BB30E1A54F10E925DE33B /* libPods-PostsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5D8E0DBABF9EE4AF7DC1EA6 /* libPods-Posts.a in Frameworks */,
+				A1DF3847267FE8A06516E789 /* Pods_Posts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87034C780F52D6A201842117 /* libPods-PostsTests.a in Frameworks */,
+				3294FD0764C95E72BD085198 /* Pods_PostsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E95486B2FD3776BE25DCDF1B /* libPods-PostsUITests.a in Frameworks */,
+				D24F1B982873E44EBEDD149C /* Pods_PostsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,9 +146,9 @@
 		1A4F4FEA190674DCD4D1ECB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1EB9261B98560A0FEFE5AAA5 /* libPods-Posts.a */,
-				ED7BB30E1A54F10E925DE33B /* libPods-PostsTests.a */,
-				01B09EA621C36E89C2A7E87B /* libPods-PostsUITests.a */,
+				64EDEE795CF19D3F6DC04072 /* Pods_Posts.framework */,
+				3401B5D1A272447530AEA343 /* Pods_PostsTests.framework */,
+				91C4B4C0768AB3FE44981494 /* Pods_PostsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,6 +168,26 @@
 				2251CA5522BEE31B00E9C6C4 /* HomeCoordinator.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2251CA5B22C08A7300E9C6C4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				22CE8F3E22BAF6B3004FA2E0 /* APIManager.swift */,
+				22CE8F6422BC8424004FA2E0 /* API.swift */,
+				2251CA5F22C0992600E9C6C4 /* RealmManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		2251CA5C22C08A9E00E9C6C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22CE8F6222BC7DB9004FA2E0 /* Post.swift */,
+				2251CA5922BEF09A00E9C6C4 /* PostDetails.swift */,
+				2251CA5D22C08AB500E9C6C4 /* PostModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		22B7798C22BAED1900CBF4F8 = {
@@ -268,10 +292,8 @@
 		22CE8F3222BAF56B004FA2E0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				22CE8F6422BC8424004FA2E0 /* API.swift */,
-				22CE8F3E22BAF6B3004FA2E0 /* APIManager.swift */,
-				22CE8F6222BC7DB9004FA2E0 /* Post.swift */,
-				2251CA5922BEF09A00E9C6C4 /* PostDetails.swift */,
+				2251CA5C22C08A9E00E9C6C4 /* Models */,
+				2251CA5B22C08A7300E9C6C4 /* Managers */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -379,6 +401,7 @@
 				22B7799122BAED1900CBF4F8 /* Sources */,
 				22B7799222BAED1900CBF4F8 /* Frameworks */,
 				22B7799322BAED1900CBF4F8 /* Resources */,
+				27419D3EE44EC96FE9B0A726 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -500,6 +523,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		27419D3EE44EC96FE9B0A726 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Posts/Pods-Posts-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Posts/Pods-Posts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		55A5A39E3CA2596E8873EDCE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +631,7 @@
 				22CE8F4122BAF6C1004FA2E0 /* Coordinator.swift in Sources */,
 				22CE8F3F22BAF6B3004FA2E0 /* APIManager.swift in Sources */,
 				2251CA4622BEB4CE00E9C6C4 /* PError.swift in Sources */,
+				2251CA5E22C08AB500E9C6C4 /* PostModel.swift in Sources */,
 				22CE8F5722BC4F4D004FA2E0 /* SplashViewModel.swift in Sources */,
 				2251CA5322BEDFB600E9C6C4 /* PGradient.swift in Sources */,
 				2251CA4C22BEDBCF00E9C6C4 /* UITableViewCell.swift in Sources */,
@@ -586,6 +640,7 @@
 				2251CA4822BED79B00E9C6C4 /* HomeDataSource.swift in Sources */,
 				22CE8F5F22BC7D94004FA2E0 /* HomeController.swift in Sources */,
 				2251CA5A22BEF09A00E9C6C4 /* PostDetails.swift in Sources */,
+				2251CA6022C0992600E9C6C4 /* RealmManager.swift in Sources */,
 				22CE8F4922BAF76C004FA2E0 /* UIColor.swift in Sources */,
 				2251CA4A22BEDBB600E9C6C4 /* UITableView.swift in Sources */,
 				22CE8F5222BC3996004FA2E0 /* SplashController.swift in Sources */,

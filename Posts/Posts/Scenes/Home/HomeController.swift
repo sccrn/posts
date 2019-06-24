@@ -31,8 +31,11 @@ class HomeController: BaseController {
         super.viewDidLoad()
         loadNavBar()
         loadLayout()
-        
-        viewModel.loadPosts()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.setupPosts()
     }
     
     private func loadNavBar() {
@@ -41,6 +44,8 @@ class HomeController: BaseController {
     }
     
     private func loadLayout() {
+        viewModel.delegate = self
+        
         HomeDataSource.setupTableView(tableView: tableView)
         tableViewDataSource = HomeDataSource.init(viewModel: viewModel)
         tableView.dataSource = tableViewDataSource

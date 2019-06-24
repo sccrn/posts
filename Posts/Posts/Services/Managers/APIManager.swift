@@ -10,7 +10,7 @@ import Alamofire
 import RxSwift
 
 class APIManager {
-    private static func createRequest<T:Decodable>(route: API) -> Observable<T> {
+    private func createRequest<T:Decodable>(route: API) -> Observable<T> {
         return Observable<T>.create { observer in
            let request = AF.request(route).responseDecodable { (response: DataResponse<T>) in
                 switch response.result {
@@ -27,7 +27,7 @@ class APIManager {
         }
     }
     
-    static func fetchPosts() -> Single<[Post]> {
+    func fetchPosts() -> Single<[Post]> {
         return createRequest(route: API.posts).asSingle()
     }
 }
