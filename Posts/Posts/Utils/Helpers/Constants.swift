@@ -24,7 +24,9 @@ struct Constants {
     static let comments = "comments"
     
     static let home = "Home"
+    static let details = "Details"
     
     static let ops = "Ops!"
+    static let noConnection = "No connection :("
     static let ok = "Ok!"
 }

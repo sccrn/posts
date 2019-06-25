@@ -21,6 +21,10 @@ extension UIColor {
     
     ///#23F0C7
     static let greenColor = UIColor(red: 34/255, green: 240/255, blue: 199/255, alpha: 1)
+    
+    static let pinkGradient = UIColor(red: 139/255, green: 30/255, blue: 63/255, alpha: 1)
+    
+    static let iconColor = UIColor(red: 39/255, green: 220/255, blue: 170/255, alpha: 1)
 }
 
 

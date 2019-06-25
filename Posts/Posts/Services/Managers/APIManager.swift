@@ -10,7 +10,9 @@ import Alamofire
 import RxSwift
 
 class APIManager {
-    private func createRequest<T:Decodable>(route: API) -> Observable<T> {
+    private let disposeBag = DisposeBag()
+    
+    private func createRequest<T:Codable>(route: API) -> Observable<T> {
         return Observable<T>.create { observer in
            let request = AF.request(route).responseDecodable { (response: DataResponse<T>) in
                 switch response.result {
@@ -31,26 +33,11 @@ class APIManager {
         return createRequest(route: API.posts).asSingle()
     }
     
-    func fetchDetails(by post: PostModel) -> Single<PostModel> {
-        let user = fetchUserDetails(by: post.userId)
-        let comments = fetchComments(by: post.id)
-        
-        return Observable<PostModel>.create({ observer in
-            Observable.zip(user, comments).subscribe(onNext: { userModel, commentsModel in
-                post.userName = userModel.name
-                post.numberOfComments = commentsModel.count
-                observer.onNext(post)
-                observer.onCompleted()
-            }).dispose()
-            return Disposables.create()
-        }).asSingle()
+    func fetchUserDetails(by userId: Int) -> Single<[User]> {
+        return createRequest(route: API.user(userId: userId)).asSingle()
     }
     
-    private func fetchUserDetails(by userId: Int) -> Observable<User> {
-        return createRequest(route: API.user(userId: userId))
-    }
-    
-    private func fetchComments(by postId: Int) -> Observable<[Comments]> {
-        return createRequest(route: API.comments(postId: postId))
+    func fetchComments(by postId: Int) -> Single<[Comments]> {
+        return createRequest(route: API.comments(postId: postId)).asSingle()
     }
 }

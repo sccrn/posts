@@ -16,7 +16,7 @@ class HomeCoordinator: RootCoordinator {
 
     private lazy var navigationController: UINavigationController = {
         let navigationController = PNavigationController(rootController: nil)
-        navigationController.navigationBar.tintColor = .backgroundColor
+        navigationController.navigationBar.tintColor = .iconColor
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationController.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         return navigationController
@@ -24,6 +24,21 @@ class HomeCoordinator: RootCoordinator {
     
     func start() {
         let home = HomeController(viewModel: HomeViewModel())
+        home.viewModel.coordinator = self
         navigationController.pushViewController(home, animated: false)
+    }
+}
+
+extension HomeCoordinator: HomeCoordinatorDelegate {
+    func moveToDetailsScreen(_ postSelected: PostModel) {
+        let details = PostDetailsController(viewModel: PostDetailsViewModel(coordinator: self,
+                                                                            post: postSelected))
+        navigationController.pushViewController(details, animated: true)
+    }
+}
+
+extension HomeCoordinator: PostDetailsCoordinatorDelegate {
+    func moveToHomeScreen() {
+        navigationController.popViewController(animated: true)
     }
 }

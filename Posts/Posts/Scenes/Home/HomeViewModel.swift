@@ -12,16 +12,11 @@ import RxCocoa
 import RealmSwift
 
 protocol HomeCoordinatorDelegate: class {
-    func moveToDetailsScreen(_ controller: HomeController, didSelectPost model: PostModel)
-}
-
-enum HomeAction {
-    case alertError(err: Error)
-    case seeDetails(post: PostModel)
+    func moveToDetailsScreen(_ postSelected: PostModel)
 }
 
 protocol HomeDelegate: class {
-    func didFinish(_ action: HomeAction)
+    func didFinish(_ error: Error)
 }
 
 class HomeViewModel {
@@ -29,10 +24,14 @@ class HomeViewModel {
     weak var coordinator: HomeCoordinatorDelegate?
     
     private let realmManager = RealmManager()
-    private let apiManager = APIManager()
     private let disposeBag = DisposeBag()
     private var postsModel: [PostModel] = []
     
+    private lazy var apiManager: APIManager = {
+        let manager = APIManager()
+        return manager
+    }()
+
     var posts = BehaviorRelay<[PostModel]>(value: [])
     
     var postObservable: Observable<[PostModel]> {
@@ -40,20 +39,21 @@ class HomeViewModel {
     }
     
     func setupPosts() {
+        postsModel.removeAll()
         postsModel = realmManager.getPostObjects()
-
-        if postsModel.count == 0 {
-            loadPosts()
+        
+        if Connectivity.isConnectedToInternet {
+            postsModel.count == 0 ? loadPosts() : posts.accept(postsModel)
         } else {
-            posts.accept(postsModel)
+           postsModel.count == 0 ? delegate?.didFinish(PError.noConnection) : posts.accept(postsModel)
         }
     }
 
-    private func loadPosts() {
+    func loadPosts() {
         apiManager.fetchPosts().subscribe(onSuccess: { [weak self] (posts) in
             self?.savePosts(response: posts)
             }, onError: { error in
-                self.delegate?.didFinish(.alertError(err: error))
+                self.delegate?.didFinish(error)
         }).disposed(by: disposeBag)
     }
     
@@ -72,12 +72,6 @@ class HomeViewModel {
         realmManager.saveObjects(objs: array)
         posts.accept(array)
     }
-}
-
-extension HomeViewModel {
-    func numberOfPosts() -> Int { return posts.value.count }
-    
-    func postName(for row: Int) -> String { return posts.value[row].title }
     
     func postSelected(for row: Int) -> PostModel { return posts.value[row] }
 }

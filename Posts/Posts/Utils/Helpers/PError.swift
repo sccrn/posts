@@ -10,5 +10,12 @@ import Foundation
 
 enum PError: Error {
     case noConnection
-    case decodableError
+}
+
+extension PError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .noConnection: return Constants.noConnection
+        }
+    }
 }

@@ -16,10 +16,7 @@ enum API: URLRequestConvertible {
     case comments(postId: Int)
     
     private var method: HTTPMethod {
-        switch self {
-        case .posts: return .get
-        case .user, .comments: return .post
-        }
+        return .get
     }
     
     private var path: String {

@@ -53,7 +53,7 @@
                                 <real key="value" value="3"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.58301979303359985" green="0.033045496791601181" blue="0.32130908966064453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.25689384341239929" green="0.73156577348709106" blue="0.67574602365493774" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
