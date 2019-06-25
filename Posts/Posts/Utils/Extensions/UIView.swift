@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+///An extension with things we'll need to customize the view.
 public extension UIView {
     
     @IBInspectable var cornerRadius: CGFloat {

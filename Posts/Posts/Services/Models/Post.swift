@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Everything that we'll need to decodable in the API's request
+
 struct Post: Codable {
     let userId: Int
     let id: Int
@@ -16,40 +18,40 @@ struct Post: Codable {
 }
 
 struct User: Codable {
-    let id: Int?
-    let name: String?
-    let username: String?
-    let email: String?
+    let id: Int
+    let name: String
+    let username: String
+    let email: String
     let address: Address
-    let phone: String?
-    let website: String?
+    let phone: String
+    let website: String
     let company: Company
     
 }
 
 struct Address: Codable {
-    let street: String?
-    let suite: String?
-    let city: String?
-    let zipcode: String?
+    let street: String
+    let suite: String
+    let city: String
+    let zipcode: String
     let geo: Geo
 }
 
 struct Geo: Codable {
-    let lat: String?
-    let lng: String?
+    let lat: String
+    let lng: String
 }
 
 struct Company: Codable {
-    let name: String?
-    let catchPhrase: String?
-    let bs: String?
+    let name: String
+    let catchPhrase: String
+    let bs: String
 }
 
 struct Comments: Codable {
-    let id: Int?
-    let name: String?
-    let email: String?
-    let postId: Int?
-    let body: String?
+    let id: Int
+    let name: String
+    let email: String
+    let postId: Int
+    let body: String
 }

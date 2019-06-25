@@ -10,6 +10,8 @@ import Foundation
 import RealmSwift
 import RxDataSources
 
+
+///Our Realm's model for our post's object.
 class PostModel: Object {
     @objc dynamic var userId: Int = 0
     @objc dynamic var id: Int = 0
@@ -17,12 +19,14 @@ class PostModel: Object {
     @objc dynamic var body: String = ""
     @objc dynamic var userName: String = ""
     @objc dynamic var numberOfComments: Int = 0
+    @objc dynamic var hasDetails: Bool = false
     
     override static func primaryKey() -> String {
         return "id"
     }
 }
 
+///This is our identifier to each object.
 extension PostModel: IdentifiableType {
     typealias Identity = String
     

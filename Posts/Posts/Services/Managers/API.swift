@@ -12,8 +12,8 @@ import Alamofire
 ///This is the enum that we're gonna use to not repeat code in our requests.
 enum API: URLRequestConvertible {
     case posts
-    case user(userId: Int)
-    case comments(postId: Int)
+    case user
+    case comments
     
     private var method: HTTPMethod {
         return .get
@@ -27,14 +27,6 @@ enum API: URLRequestConvertible {
         }
     }
     
-    private var parameters: Parameters? {
-        switch self {
-        case .posts: return nil
-        case .user(let userId): return [Constants.userId: userId]
-        case .comments(let postId): return [Constants.postId: postId]
-        }
-    }
-    
     ///Here, we will get from this function our urlRequest exactly the type that we need.
     func asURLRequest() throws -> URLRequest {
         let url = try Constants.baseURL.asURL()
@@ -44,15 +36,7 @@ enum API: URLRequestConvertible {
         
         urlRequest.setValue(Constants.json, forHTTPHeaderField: Constants.acceptType)
         urlRequest.setValue(Constants.json, forHTTPHeaderField: Constants.contentType)
-        
-        if let parameters = parameters {
-            do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            } catch {
-                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
-            }
-        }
-        
+
         return urlRequest
     }
 }

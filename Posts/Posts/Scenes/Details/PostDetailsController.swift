@@ -38,8 +38,8 @@ class PostDetailsController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadNavBar()
         loadLayout()
+        loadNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,8 +61,11 @@ class PostDetailsController: BaseController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.registerNib(cellClass: DetailsCell.self)
         
-        let item = Observable.just([SectionPosts(items: [viewModel.post.value], header: "")])
-        item.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        viewModel.setupPostDetails()
+        
+        viewModel.postObservable.flatMap { (post) -> Observable<[SectionPosts]> in
+            return .just([SectionPosts(items: [post], header: "")])
+        }.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
     private func showALertError(message: String) {

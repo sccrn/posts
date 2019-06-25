@@ -8,6 +8,7 @@
 
 import Foundation
 
+///Our error's class with generic erros.
 enum PError: Error {
     case noConnection
 }

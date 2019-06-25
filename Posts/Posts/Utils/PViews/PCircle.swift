@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+///Our custom view for draw a circle in the screen.
 class PCircle: UIView {
     var path: UIBezierPath!
     

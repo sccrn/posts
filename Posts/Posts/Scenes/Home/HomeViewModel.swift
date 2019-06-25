@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import RealmSwift
 
 protocol HomeCoordinatorDelegate: class {
     func moveToDetailsScreen(_ postSelected: PostModel)
@@ -27,8 +26,8 @@ class HomeViewModel {
     private let disposeBag = DisposeBag()
     private var postsModel: [PostModel] = []
     
-    private lazy var apiManager: APIManager = {
-        let manager = APIManager()
+    private lazy var postManager: PostManager = {
+        let manager = PostManager()
         return manager
     }()
 
@@ -50,7 +49,7 @@ class HomeViewModel {
     }
 
     func loadPosts() {
-        apiManager.fetchPosts().subscribe(onSuccess: { [weak self] (posts) in
+        postManager.fetchPosts().subscribe(onSuccess: { [weak self] (posts) in
             self?.savePosts(response: posts)
             }, onError: { error in
                 self.delegate?.didFinish(error)

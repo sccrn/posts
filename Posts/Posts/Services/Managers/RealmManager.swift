@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
+///Our Realm's class with all the methods that we're gonna need, so we don't need to import in every
+///class the RealmSwift. 
 class RealmManager {
     let realm = try? Realm()
 
@@ -20,8 +22,11 @@ class RealmManager {
     }
     
     /// Editing the object, that's why the update = true.
-    func editObject(obj: PostModel) {
+    func editObject(name: String, comments: Int, obj: PostModel) {
         try? realm!.write ({
+            obj.hasDetails = true
+            obj.userName = name
+            obj.numberOfComments = comments
             realm?.add(obj, update: true)
         })
     }

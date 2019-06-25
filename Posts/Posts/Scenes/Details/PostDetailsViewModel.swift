@@ -23,10 +23,10 @@ class PostDetailsViewModel {
     weak var delegate: PostDetailsDelegate?
     weak var coordinator: PostDetailsCoordinatorDelegate?
     
-    var post = BehaviorRelay<PostModel>(value: PostModel())
+    private var model: PostModel
     private let disposeBag = DisposeBag()
-    private lazy var postManager: APIManager = {
-        let manager = APIManager()
+    private lazy var postManager: PostManager = {
+        let manager = PostManager()
         return manager
     }()
     
@@ -35,44 +35,41 @@ class PostDetailsViewModel {
         return manager
     }()
     
+    var post = BehaviorRelay<PostModel>(value: PostModel())
+    
     var postObservable: Observable<PostModel> {
         return post.asObservable()
     }
     
     init(coordinator: PostDetailsCoordinatorDelegate, post: PostModel) {
         self.coordinator = coordinator
-        setupPostDetails(post: post)
+        self.model = post
     }
     
-    private func setupPostDetails(post: PostModel) {
-        if post.userName.isEmpty {
-            fetchDetails(post: post)
+    func setupPostDetails() {
+        if Connectivity.isConnectedToInternet {
+            model.hasDetails ? post.accept(model) : fetchDetails(postModel: model)
         } else {
-            self.post.accept(post)
+            model.hasDetails ? post.accept(model) : delegate?.didFinish(PError.noConnection)
         }
     }
     
-    private func fetchDetails(post: PostModel) {
-//        Observable.zip(postManager.fetchUserDetails(by: post.userId), postManager.fetchComments(by: post.id)) { users, comments in
-//            return (users, comments)
-//            }.subscribe(onNext: { users, comments in
-//                var array = users.filter { $0.id == post.userId }
-//                post.userName = array[0].name
-//                post.numberOfComments = comments.count
-//
-//                self.updatePost(response: post)
-//            }, onError: { error in
-//                self.delegate?.didFinish(error)
-//            }).disposed(by: disposeBag)
-        postManager.fetchComments(by: post.id).subscribe(onSuccess: { [weak self] (comments) in
-                print("aaaa ", comments.count)
-            }, onError: { error in
-                self.delegate?.didFinish(error)
-        }).disposed(by: disposeBag)
+    //We're using the "zip" combining operator to get the result of these two requests.
+    //Then we're getting the correct user and counting the comments in this post.
+    //In this way, our home's screen only need to do one request.
+    private func fetchDetails(postModel: PostModel) {
+        Observable.zip(postManager.fetchUserDetails(), postManager.fetchComments(), resultSelector: { users, comments in
+            if let user = users.first(where: { $0.id == postModel.userId }) {
+                self.updatePost(response: postModel,
+                                name: user.name, comments: comments.filter{$0.postId == postModel.id}.count)
+            }
+        }).observeOn(MainScheduler.instance)
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
-    private func updatePost(response: PostModel) {
-        realmManager.editObject(obj: response)
+    private func updatePost(response: PostModel, name: String, comments: Int) {
+        realmManager.editObject(name: name, comments: comments, obj: response)
         post.accept(response)
     }
 }

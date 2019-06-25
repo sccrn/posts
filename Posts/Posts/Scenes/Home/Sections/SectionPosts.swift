@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxDataSources
 
+///Our custom section, in the rxDataSource's type.
 struct SectionPosts {
     var items: [PostModel]
     var header: String = ""
@@ -19,13 +20,5 @@ extension SectionPosts: SectionModelType {
     init(original: SectionPosts, items: [PostModel]) {
         self = original
         self.items = items
-    }
-}
-
-extension SectionPosts: AnimatableSectionModelType {
-    typealias Identity = String
-    
-    var identity: String {
-        return header
     }
 }

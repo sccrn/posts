@@ -60,6 +60,7 @@ class HomeController: BaseController {
     private func loadLayout() {
         viewModel.delegate = self
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.registerNib(cellClass: HomeCell.self)
         tableView.addSubview(refreshControl)
         
