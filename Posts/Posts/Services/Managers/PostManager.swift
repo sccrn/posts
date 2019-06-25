@@ -1,5 +1,5 @@
 //
-//  APIManager.swift
+//  PostManager.swift
 //  Posts
 //
 //  Created by Samanta Clara Coutinho Rondon do Nascimento on 2019-06-19.
@@ -9,7 +9,7 @@
 import Alamofire
 import RxSwift
 
-class APIManager {
+class PostManager {
     private let disposeBag = DisposeBag()
     
     private func createRequest<T:Codable>(route: API) -> Observable<T> {
@@ -33,11 +33,11 @@ class APIManager {
         return createRequest(route: API.posts).asSingle()
     }
     
-    func fetchUserDetails(by userId: Int) -> Single<[User]> {
-        return createRequest(route: API.user(userId: userId)).asSingle()
+    func fetchUserDetails() -> Observable<[User]> {
+        return createRequest(route: API.user)
     }
     
-    func fetchComments(by postId: Int) -> Single<[Comments]> {
-        return createRequest(route: API.comments(postId: postId)).asSingle()
+    func fetchComments() -> Observable<[Comments]> {
+        return createRequest(route: API.comments)
     }
 }
